@@ -25,31 +25,40 @@ class Cajero:
     def verSaldo(self):
         return f"Saldo Actual: {self.saldo}Bs"
     
+#SUBCLASE (HERENCIA)
+class CajeroBnb(Cajero):
+    def __init__(self,nombre,saldo=0):
+        super().__init__(nombre,saldo)
+    
+    def menuPrincipal(self):
+        #Interfaz para el cajero
+        while True:
+            print("Bienvenido al Cajero")
+            print("1. Depositar")
+            print("2. Retirar")
+            print("3. Saldo")
+            print("4. Salir")
+
+            opcion=input("Seleccion la opcion que desea realizar: ")
+            if opcion=="1":
+                monto=int(input("Ingrese la cantidad a depositar: "))
+                print(cuenta1.depositar(monto))
+            elif opcion=="2":
+                retiro=int(input("Ingrese la cantidad a retirar: "))
+                print(cuenta1.retirar(retiro))
+            elif opcion=="3":
+                print(cuenta1.verSaldo())
+            elif opcion=="4":
+                print("Gracias por utlizar nuestros servicios...")
+                break
+            else: 
+                print("Error opcion invalida")
+
+
+
+
+
 
 #Paso 4. Definir los objetos de la clase
-cuenta1=Cajero("Kevin Arroyo",1500)
-cuenta2=Cajero("Maria",50)
-
-#Interfaz para el cajero
-
-while True:
-    print("Bienvenido al Cajero")
-    print("1. Depositar")
-    print("2. Retirar")
-    print("3. Saldo")
-    print("4. Salir")
-
-    opcion=input("Seleccion la opcion que desea realizar: ")
-    if opcion=="1":
-        monto=int(input("Ingrese la cantidad a depositar: "))
-        print(cuenta1.depositar(monto))
-    elif opcion=="2":
-        retiro=int(input("Ingrese la cantidad a retirar: "))
-        print(cuenta1.retirar(retiro))
-    elif opcion=="3":
-        print(cuenta1.verSaldo())
-    elif opcion=="4":
-        print("Gracias por utlizar nuestros servicios...")
-        break
-    else: 
-        print("Error opcion invalida")
+cuenta1=CajeroBnb("Kevin Arroyo")
+cuenta1.menuPrincipal()
